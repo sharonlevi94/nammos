@@ -1,0 +1,57 @@
+.icon {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  &.xl {
+    width: 24px;
+    height: 24px;
+  }
+  &.lg {
+    width: 21px;
+    height: 21px;
+  }
+  &.sm {
+    width: 16px;
+    height: 16px;
+  }
+  &.xs {
+    width: 14px;
+    height: 14px;
+  }
+  &.nammos {
+    background-image: url("../icons/nammos.svg");
+  }
+  &.back {
+    background-image: url("../icons/back.svg");
+  }
+  &.calendar {
+    background-image: url("../icons/calendar.svg");
+  }
+  &.close {
+    background-image: url("../icons/close.svg");
+  }
+  &.done {
+    background-image: url("../icons/done.svg");
+  }
+  &.hamburger {
+    background-image: url("../icons/hamburger.svg");
+  }
+  &.home {
+    background-image: url("../icons/home.svg");
+  }
+  &.person {
+    background-image: url("../icons/person.svg");
+  }
+  &.plus {
+    background-image: url("../icons/plus.svg");
+  }
+  &.settings {
+    background-image: url("../icons/settings.svg");
+  }
+}

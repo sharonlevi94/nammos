@@ -61,7 +61,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     icon: {
-      fileName: 'nammos-logo.png',
+      fileName: "nammos.png",
       sizes: [64, 120, 144, 152, 192, 384, 512]
     },
     manifest: {
@@ -86,11 +86,11 @@ export default {
         },
         endpoints: {
           // Get the token of the user from the server
-          login: { url: 'api/auth/login', method: 'post', propertyName: 'token' },
-          logout: { url: 'api/auth/logout', method: 'post' },
+          login: { url: 'auth/login', method: 'post', propertyName: 'token' },
+          logout: { url: 'auth/logout', method: 'post' },
           // user: false
           // Get the user information from the server
-          user: { url: 'api/auth/find-one', method: 'get', propertyName: 'user' }
+          user: { url: 'auth/find-one', method: 'get', propertyName: 'user' }
         }
       }
     }
@@ -118,5 +118,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+  server: {
+    host: 0
   }
 }

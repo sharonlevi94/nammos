@@ -1,10 +1,12 @@
 <template>
-$END$
+  <SectionLayout></SectionLayout>
 </template>
 
 <script>
+import SectionLayout from "~/components/SectionLayout";
 export default {
-name: "settings"
+  name: "settings",
+  components: {SectionLayout}
 }
 </script>
 

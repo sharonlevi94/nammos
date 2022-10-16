@@ -1,0 +1,19 @@
+/* General
+---------------------------- */
+
+// icons
+@import "/assets/css/icons.scss";
+
+// fonts
+@import "/assets/css/fonts.scss";
+
+
+#nammos {
+  font-family: Amatica!important;
+  color: #22272E!important;
+}
+
+label, h1, h2, h3, h4, h5, h6, p, div, v-container {
+  font-family: Amatica;
+  color: #22272E;
+}
