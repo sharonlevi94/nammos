@@ -4,11 +4,12 @@
     classes,
     lg? 'pa-7' : md? 'pa-5': sm? 'pa-3': '',
     { 'd-none d-print-block': print },
-    $auth.loggedIn ? '' : 'full-layout']" :style="styles.join('')">
-    <div :class="['section-layout-header','section-padding']">
-      <slot name="header" />
-    </div>
-    <div class="section-padding">
+    $auth.loggedIn ? '' : 'full-layout']"
+       :style="styles.join('')">
+<!--    <div :class="['section-layout-header','section-padding']">-->
+<!--      <slot name="header" />-->
+<!--    </div>-->
+    <div :class="['section-padding',$auth.loggedIn ? '' : 'full-layout' ]">
       <slot/>
     </div>
   </div>
@@ -45,10 +46,10 @@ export default {
   flex: 1 1 auto;
   flex-wrap: nowrap;
   min-width: 0;
-  height: calc(100vh - 60px - 30px);
+  min-height: calc(100vh - 60px - 30px);
   // background-color: #E5E5E5;
   &.full-layout {
-    height: 100vh;
+    min-height: 100vh;
   }
 }
 .section-layout-header{
@@ -57,5 +58,9 @@ export default {
 }
 .section-padding{
   width: 100%;
+  min-height: calc(100vh - 60px - 30px);
+  &.full-layout {
+    min-height: 100vh;
+  }
 }
 </style>
