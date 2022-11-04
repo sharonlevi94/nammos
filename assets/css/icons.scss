@@ -24,6 +24,10 @@
     width: 14px;
     height: 14px;
   }
+  &.super-xl {
+    width: 100px;
+    height: 100px;
+  }
   &.nammos {
     background-image: url("../icons/nammos.svg");
   }
@@ -48,10 +52,19 @@
   &.person {
     background-image: url("../icons/person.svg");
   }
+  &.user {
+    background-image: url("../icons/user.svg");
+  }
   &.plus {
     background-image: url("../icons/plus.svg");
   }
   &.settings {
     background-image: url("../icons/settings.svg");
+  }
+  &.boat {
+    background-image: url("../images/yatch.png");
+  }
+  &.rules {
+    background-image: url("../icons/rules.svg");
   }
 }

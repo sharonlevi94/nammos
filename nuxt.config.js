@@ -90,7 +90,8 @@ export default {
           logout: { url: 'auth/logout', method: 'post' },
           // user: false
           // Get the user information from the server
-          user: { url: 'auth/find-one', method: 'get', propertyName: 'user' }
+          user: false
+          // user: { url: 'auth/find-one', method: 'get', propertyName: 'user' }
         }
       }
     }

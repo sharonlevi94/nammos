@@ -1,9 +1,9 @@
 <template>
   <v-footer
     color="#1877F2"
-    height="30px"
+    height="50px"
     app
-    class="d-flex justify-space-around">
+    class="d-flex justify-space-around rounded-t-pill">
     <i class="icon person"/>
     <i class="icon home"/>
     <i class="icon calendar"/>

@@ -7,14 +7,14 @@
         </v-flex>
         <v-flex xs12>
           <v-container fluid>
-            <v-layout v-if="!login" row wrap>
+            <v-layout v-if="!displayLogin" row wrap>
               <v-flex xs12 mt-10>
                 <v-btn
                   class="btn-text"
                   block
                   x-large
                   elevation="10"
-                  @click="login = true">
+                  @click="displayLogin = true">
                   התחברות
                 </v-btn>
               </v-flex>
@@ -28,7 +28,7 @@
                 </v-btn>
               </v-flex>
             </v-layout>
-            <v-form v-else ref="form">
+            <v-form v-else ref="form" @submit.prevent="login">
               <v-layout row wrap>
                 <v-flex class="d-flex flex-column" xs12>
                   <span class="field-title font lg">דוא"ל</span>
@@ -45,7 +45,10 @@
                     v-model="form.password"
                     :rules="notEmpty"
                     placeholder="סיסמה"
+                    :type="showPassword? 'text' : 'password'"
+                    :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                     solo
+                    @click:append="showPassword = !showPassword"
                   ></v-text-field>
                 </v-flex>
                 <v-flex xs12 mt-3>
@@ -53,7 +56,7 @@
                          block
                          x-large
                          elevation="10"
-                         @click="$router.push({ name: 'register' })">
+                         @click="login">
                     כניסה
                   </v-btn>
                 </v-flex>
@@ -82,11 +85,35 @@ export default {
   mixins: [rules],
   data () {
     return {
-      login: false,
+      displayLogin: false,
+      showPassword: false,
       form: {
         email: null,
         password: null
       }
+    }
+  },
+  methods: {
+    async login () {
+      try {
+        const response = await this.$auth.loginWith('local', {
+          data: {...this.form}
+        })
+        if (response?.data) {
+          await this.$auth.setUser(response.data.user)
+        }
+        this.$store.commit('auth-users/setToken', response.data.token)
+        this.$store.commit('auth-users/setUser', response.data.user)
+        return this.$router.push({name: 'index'})
+      } catch (e) {
+        console.error('login error: ', e)
+      }
+    }
+  },
+  created() {
+    if (this.$auth.loggedIn) {
+      this.$router.push({name: 'index'})
+      local
     }
   }
 }

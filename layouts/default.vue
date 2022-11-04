@@ -20,6 +20,11 @@ export default {
       rightDrawer: false,
     }
   },
+  created() {
+    if (!this.$auth.loggedIn) {
+      this.$router.push({name: 'welcome'})
+    }
+  },
   async mounted () {
     this.onResize()
     this.$nextTick(() => {

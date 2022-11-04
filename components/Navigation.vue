@@ -4,12 +4,12 @@
     right
     fixed
   >
-    <i class="icon close xs mr-3 mt-3" @click="$emit('close')"/>
-    <div class="pa-3">
+    <i class="icon close xs mr-8 mt-7" @click="$emit('close')"/>
+    <div class="pa-10 font xl">
       <div
         v-for="(item, index) in items"
         :key="index"
-        class="d-flex mt-3"
+        class="d-flex mb-5"
         @click.stop="$router.push(item && item.to)">
         <v-icon class="ml-5">
           {{ item && item.icon }}
@@ -18,7 +18,7 @@
       </div>
       <div class="d-flex mt-3">
         <v-icon class="ml-5">mdi-logout</v-icon>
-        <span>יציאה</span>
+        <span class="font xl" @click="logout">יציאה</span>
       </div>
     </div>
   </v-navigation-drawer>
@@ -42,6 +42,12 @@ export default {
       ],
     }
   },
+  methods: {
+    logout () {
+     this.$auth.logout()
+     this.$router.push({name:'welcome'})
+    }
+  }
 }
 </script>
 
