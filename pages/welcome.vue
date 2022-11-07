@@ -101,6 +101,7 @@ export default {
         })
         if (response?.data) {
           await this.$auth.setUser(response.data.user)
+          await this.$auth.setUserToken(response.data.token)
         }
         this.$store.commit('auth-users/setToken', response.data.token)
         this.$store.commit('auth-users/setUser', response.data.user)
@@ -113,7 +114,6 @@ export default {
   created() {
     if (this.$auth.loggedIn) {
       this.$router.push({name: 'index'})
-      local
     }
   }
 }

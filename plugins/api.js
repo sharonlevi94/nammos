@@ -1,6 +1,6 @@
 export default (context, inject) => {
   inject('authApi', {
-    getAuth: data => context.$axios.$post('auth/find-one', data)
+    refreshUserData: data => context.$axios.$get('auth/find-one', {params: data})
   })
   inject('usersApi', {
     getUsers: () => context.$axios.$get('users'),

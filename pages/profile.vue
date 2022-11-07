@@ -1,7 +1,6 @@
 <template>
-<SectionLayout>
-
-</SectionLayout>
+  <SectionLayout>
+  </SectionLayout>
 </template>
 
 <script>

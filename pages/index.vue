@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-layout row wrap>
         <v-flex xs6 pb-4 pl-2>
-          <div class="card">
+          <div class="card" @click="$router.push({name: 'calendar'})">
             <div class="icon boat super-xl"/>
             <span>הורדת סירה</span>
           </div>
@@ -15,7 +15,7 @@
           </div>
         </v-flex>
       <v-flex xs6 pl-2>
-          <div class="card">
+          <div class="card" @click="$router.push({name: 'profile'})">
             <div class="icon user super-xl"/>
             <span>הפרופיל שלי</span>
           </div>
@@ -45,7 +45,7 @@ export default {
   border-radius: 10px;
   height: 200px;
   width: 100%;
-  font-size: 42px;
+  font-size: 200%;
   display: flex;
   flex-direction: column;
   align-items: center;

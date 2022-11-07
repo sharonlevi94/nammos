@@ -20,9 +20,14 @@ export default {
       rightDrawer: false,
     }
   },
-  created() {
-    if (!this.$auth.loggedIn) {
-      this.$router.push({name: 'welcome'})
+  async created() {
+    try {
+      if (!this.$auth.loggedIn) {
+        await this.$router.push({name: 'welcome'})
+      }
+      return this.$store.dispatch('auth-users/refreshToken')
+    } catch (e) {
+      console.error('layout default error: ', e)
     }
   },
   async mounted () {
