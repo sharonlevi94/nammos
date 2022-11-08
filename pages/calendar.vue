@@ -1,5 +1,6 @@
 <template>
-
+  <SectionLayout md>
+  </SectionLayout>
 </template>
 
 <script>

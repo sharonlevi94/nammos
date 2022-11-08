@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-layout row wrap>
         <v-flex xs6 pb-4 pl-2>
-          <div class="card" @click="$router.push({name: 'calendar'})">
+          <div class="card" @click="$router.push({name: 'pick-date'})">
             <div class="icon boat super-xl"/>
             <span>הורדת סירה</span>
           </div>
