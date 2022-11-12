@@ -10,10 +10,13 @@
               full-width
               elevation="15"
             ></v-date-picker>
-            <NammosButton title="הבא" class="mt-5" @click="form.date ? show = 'time_picker' : 'date_picker'"/>
+            <NammosButton
+              title="הבא"
+              class="mt-5"
+              @click="form.date ? show = 'time_picker' : 'date_picker'"/>
           </v-flex>
           <v-flex v-if="show === 'time_picker'" xs12>
-            <span class="date-title">אנא בחר\י שעת הגעה:</span>
+            <span class="date-title">אנא בחרו שעת הגעה:</span>
             <v-time-picker
               v-model="form.time"
               class="mt-4"
@@ -42,8 +45,6 @@ export default {
       },
       show: 'date_picker'
     }
-  },
-  methods: {
   }
 }
 </script>

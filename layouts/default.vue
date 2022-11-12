@@ -6,6 +6,7 @@
     </v-main>
     <Navigation  :drawer="rightDrawer" @close="rightDrawer = !rightDrawer"/>
     <AppFooter v-if="$auth.loggedIn"/>
+    <NammosSnackbar v-if="$store.state.snackbarValue"/>
   </v-app>
 </template>
 

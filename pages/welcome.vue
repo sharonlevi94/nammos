@@ -107,6 +107,13 @@ export default {
         this.$store.commit('auth-users/setUser', response.data.user)
         return this.$router.push({name: 'index'})
       } catch (e) {
+        await this.$auth.logout()
+        console.log(e, 'e')
+        this.$store.commit('setSnackbar', {
+          error: true,
+          text: e?.message,
+          value: true
+        })
         console.error('login error: ', e)
       }
     }
