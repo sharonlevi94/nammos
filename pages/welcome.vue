@@ -63,7 +63,7 @@
                 <v-flex class="d-flex justify-center" xs12>
                   <span class="field-title text-decoration-underline"
                         style="cursor: pointer"
-                        @click="login = false">
+                        @click="displayLogin = false">
                     חזרה
                   </span>
                 </v-flex>
