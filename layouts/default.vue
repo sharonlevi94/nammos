@@ -24,7 +24,7 @@ export default {
   async created() {
     try {
       if (!this.$auth.loggedIn) {
-        await this.$router.push({name: 'welcome'})
+        return this.$router.push({name: 'welcome'})
       }
       return this.$store.dispatch('auth-users/refreshToken')
     } catch (e) {

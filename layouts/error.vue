@@ -1,15 +1,23 @@
 <template>
-  <v-app dark>
-    <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
-  </v-app>
+  <SectionLayout md :background="'#18adf2'">
+    <v-container style="height: 100vh" class="d-flex justify-start align-start">
+      <v-layout row wrap>
+        <v-flex class="d-flex justify-center" xs12>
+          <div class="nammos-logo"/>
+        </v-flex>
+        <v-flex xs12>
+          <span class="err-message d-flex justify-center">אופס! נתקלנו בבעיה...</span>
+        </v-flex>
+        <v-flex xs12>
+          <NammosButton
+            title="חזרה דף הבית"
+            class="mt-5"
+            color="#E5E5E5"
+            @click="$router.push({name:'home'})"/>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </SectionLayout>
 </template>
 
 <script>
@@ -41,5 +49,20 @@ export default {
 <style scoped>
 h1 {
   font-size: 20px;
+}
+.nammos-logo {
+  width: 100%;
+  height: 40vh;
+  background-image: url("../assets/images/nammos.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+.err-message {
+  font-size: 42px;
+  color: #E5E5E5;
+  font-weight: 600;
+  width: 100%;
 }
 </style>

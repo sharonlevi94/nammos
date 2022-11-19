@@ -72,6 +72,11 @@ export default {
 
   // Auth module configuration
   auth: {
+    redirect: {
+      login: '/welcome',
+      logout: '/welcome',
+      home: '/home'
+    },
     strategies: {
       local: {
         token: {
@@ -87,7 +92,7 @@ export default {
         endpoints: {
           // Get the token of the user from the server
           login: { url: 'auth/login', method: 'post', propertyName: 'token' },
-          logout: { url: 'auth/logout', method: 'post' },
+          logout: false,
           // user: false
           // Get the user information from the server
           user: false
@@ -95,6 +100,10 @@ export default {
         }
       }
     }
+  },
+
+  router: {
+    middleware: ['auth']
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

@@ -81,6 +81,8 @@ import SectionLayout from "~/components/SectionLayout";
 import rules from "~/mixins/rules";
 export default {
   name: "welcome",
+  layout: 'login',
+  auth: false,
   components: {SectionLayout},
   mixins: [rules],
   data () {

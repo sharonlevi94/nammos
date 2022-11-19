@@ -1,30 +1,9 @@
 <template>
-  <SectionLayout md>
-    <v-container fluid>
+  <SectionLayout md :background="'#18adf2'">
+    <v-container style="height: 100vh" class="d-flex justify-start align-center">
       <v-layout row wrap>
-        <v-flex xs6 pb-4 pl-2>
-          <div class="card" @click="$router.push({name: 'pick-date'})">
-            <div class="icon boat super-xl"/>
-            <span>הורדת סירה</span>
-          </div>
-        </v-flex>
-      <v-flex xs6 pr-2>
-          <div class="card">
-            <div class="icon boat super-xl" style="transform: scaleX(-1);"/>
-            <span>העלאת סירה</span>
-          </div>
-        </v-flex>
-      <v-flex xs6 pl-2>
-          <div class="card" @click="$router.push({name: 'profile'})">
-            <div class="icon user super-xl"/>
-            <span>הפרופיל שלי</span>
-          </div>
-        </v-flex>
-      <v-flex xs6 pr-2>
-          <div class="card">
-            <div class="icon rules super-xl"/>
-            <span>תקנון ומדיניות </span>
-          </div>
+        <v-flex class="d-flex justify-center align-center" xs12>
+          <div class="nammos-logo"/>
         </v-flex>
       </v-layout>
     </v-container>
@@ -32,25 +11,27 @@
 </template>
 
 <script>
-import SectionLayout from "~/components/SectionLayout";
 export default {
-  name: 'IndexPage',
-  components: {SectionLayout}
+  name: "index",
+  layout: 'login',
+  auth: false,
+  async created () {
+    if (this.$auth.loggedIn) {
+      return this.$router.push({name: 'home'})
+    }
+    return this.$router.push({name:'welcome'})
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.card {
-  background-color: white;
-  border-radius: 10px;
-  height: 200px;
+.nammos-logo {
   width: 100%;
-  font-size: 200%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+  height: 100vh;
+  background-image: url("../assets/images/nammos.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 </style>
