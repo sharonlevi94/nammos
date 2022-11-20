@@ -20,7 +20,6 @@ export const mutations = {
     state.windowHeight = windowHeight
   },
   setSnackbar (state,  payload ) {
-    console.log(payload, 'payload')
     state.snackbarValue = payload?.value
     state.snackbarText = payload?.text
     state.snackbarSuccess = payload?.success || false

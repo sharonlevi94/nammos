@@ -1,6 +1,7 @@
 <template>
   <v-btn
     depressed
+    :disabled="disabled"
     :color="color"
     :width="width"
     height="60px"
@@ -17,7 +18,8 @@ export default {
   props: {
     title: { type: String, required: true },
     width: { type: String, required: false, default: '100%' },
-    color: { type: String, required: false, default: 'primary'}
+    color: { type: String, required: false, default: 'primary'},
+    disabled: { type: Boolean, required: false, default: false }
   }
 }
 </script>

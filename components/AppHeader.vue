@@ -4,7 +4,7 @@
       <i class="icon hamburger" @click.stop="$emit('showDrawer')"/>
     </div>
     <div style="width: 33%;" class="d-flex justify-center">
-      <img width="60" height="60" src="../assets/images/nammos.png" @click="$router.push('/')" alt="nammos-logo"/>
+      <img width="60" height="60" src="../assets/images/nammos.png" @click="$router.push('/home')" alt="nammos-logo"/>
     </div>
     <div style="width: 33%"/>
   </v-app-bar>

@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout md :background="'#18adf2'">
+  <SectionLayout md >
     <v-container style="height: 100vh" class="d-flex justify-start align-start">
       <v-layout row wrap>
         <v-flex class="d-flex justify-center" xs12>
@@ -10,9 +10,9 @@
         </v-flex>
         <v-flex xs12>
           <NammosButton
-            title="חזרה דף הבית"
+            title="חזרה לדף הבית"
             class="mt-5"
-            color="#E5E5E5"
+            color="primary"
             @click="$router.push({name:'home'})"/>
         </v-flex>
       </v-layout>
@@ -61,7 +61,7 @@ h1 {
 }
 .err-message {
   font-size: 42px;
-  color: #E5E5E5;
+  color: #000000;
   font-weight: 600;
   width: 100%;
 }
