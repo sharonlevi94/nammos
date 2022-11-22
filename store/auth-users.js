@@ -20,6 +20,9 @@ export const actions = {
       const cookies = this.$auth.$storage.getCookies()
       const token = cookies['auth._token.local']
       const user = await this.$authApi.refreshUserData({token: token})
+      if (user?.response?.message === 'jwt expired') {
+        return this.$auth.logout()
+      }
       await this.$auth.setUser(user)
       commit('setUser', user)
       commit('setToken', token)

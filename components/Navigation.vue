@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       items: [
-        { title: 'דף הבית', icon: 'mdi-home-city', to: '/' },
+        { title: 'דף הבית', icon: 'mdi-home-city', to: '/home' },
         { title: 'פרופיל', icon: 'mdi-account', to: '/profile' },
         { title: 'לוח שנה', icon: 'mdi-calendar', to: '/calendar' },
         { title: 'צוות העובדים', icon: 'mdi-account-group-outline', to: '/employees' },

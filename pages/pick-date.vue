@@ -83,6 +83,7 @@ export default {
         this.availableTimes = await this.$calendarApi.getAvailableTimes({date: this.form.date})
         this.allowHours = Object.keys(this.availableTimes).map(key => parseInt(key, 10))
       } catch (e) {
+        this.$store.commit('setSnackbar', {error: true, value: true, text: 'אירעה שגיאה, אנא נסו שנית'})
         console.error('checkAvailableTimes: ', e)
       }
     },
@@ -92,7 +93,8 @@ export default {
           user_id: this.$auth?.user?._id,
           ...this.form
         })
-        console.log(res, 'res')
+        this.$store.commit('setSnackbar', {success: true, value: true, text: 'השמירה בוצעה בהצלחה!'})
+        return this.$router.push({name: 'home'})
       } catch (e) {
         this.$store.commit('setSnackbar', {error: true, value: true, text: e?.message})
         console.error('saveTheDate: ', e)
