@@ -1,30 +1,17 @@
 <template>
-  <SectionLayout md>
+  <SectionLayout sm>
     <v-container fluid>
-      <v-layout row wrap>
-        <v-flex xs6 pb-4 pl-2>
-          <div class="card" @click="$router.push({name: 'pick-date'})">
-            <div class="icon boat super-xl"/>
-            <span>הורדת סירה</span>
-          </div>
-        </v-flex>
-      <v-flex xs6 pr-2>
-          <div class="card">
-            <div class="icon boat super-xl" style="transform: scaleX(-1);"/>
-            <span>העלאת סירה</span>
-          </div>
-        </v-flex>
-      <v-flex xs6 pl-2>
-          <div class="card" @click="$router.push({name: 'profile'})">
-            <div class="icon user super-xl"/>
-            <span>הפרופיל שלי</span>
-          </div>
-        </v-flex>
-      <v-flex xs6 pr-2>
-          <div class="card">
-            <div class="icon rules super-xl"/>
-            <span>תקנון ומדיניות </span>
-          </div>
+      <v-layout column>
+        <v-flex
+          v-for="(item, index) in items"
+          :key="index"
+          class="card"
+          xs12
+          mb-2>
+          <i
+            :class="['icon', item && item.icon, 'xl', 'ml-2']"
+            :style="item && item.iconStyles.join('')"/>
+          <span>{{ item && item.name }}</span>
         </v-flex>
       </v-layout>
     </v-container>
@@ -35,7 +22,18 @@
 import SectionLayout from "~/components/SectionLayout";
 export default {
   name: 'IndexPage',
-  components: {SectionLayout}
+  components: {SectionLayout},
+  data () {
+    return {
+      items: [
+        { name: 'הורדת סירה', icon: 'boat', to: 'pick-date', iconStyles: [], admin: false },
+        { name: 'העלאת סירה', icon: 'boat', to: 'queue', iconStyles: [], admin: false },
+        { name: 'הפרופיל שלי', icon: 'user', to: 'profile', iconStyles: ['transform: scaleX(-1);'], admin: false },
+        { name: 'תקנון ומדיניות', icon: 'rules', to: 'privacy-policy', iconStyles: [], admin: false },
+        { name: 'איזור ניהול', icon: 'rules', to: 'admin', iconStyles: [], admin: true },
+      ]
+    }
+  }
 }
 </script>
 
@@ -43,14 +41,15 @@ export default {
 .card {
   background-color: white;
   border-radius: 10px;
-  height: 200px;
+  height: 42px;
   width: 100%;
-  font-size: 200%;
+  font-size: 16px;
+
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+  justify-content: flex-start;
+  text-align: start;
+
+  padding: 8px 20px;
 }
 </style>
