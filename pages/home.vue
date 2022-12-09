@@ -7,7 +7,8 @@
           :key="index"
           class="card"
           xs12
-          mb-2>
+          mb-2
+          @click="$router.push({name: item && item.to})">
           <i
             :class="['icon', item && item.icon, 'xl', 'ml-2']"
             :style="item && item.iconStyles.join('')"/>
