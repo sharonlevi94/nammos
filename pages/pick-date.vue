@@ -80,23 +80,29 @@ export default {
     },
     async checkAvailableTimes () {
       try {
+        this.$store.commit('setLoader', {value: true})
         this.availableTimes = await this.$calendarApi.getAvailableTimes({date: this.form.date})
         this.allowHours = Object.keys(this.availableTimes).map(key => parseInt(key, 10))
+        this.$store.commit('setLoader', {value: false})
       } catch (e) {
-        this.$store.commit('setSnackbar', {error: true, value: true, text: 'אירעה שגיאה, אנא נסו שנית'})
+        this.$store.commit('setLoader', {value: false})
+        await this.$store.dispatch('showSnackBar', {error: true, value: true, text: 'אירעה שגיאה, אנא נסו שנית'})
         console.error('checkAvailableTimes: ', e)
       }
     },
     async saveTheDate () {
       try {
+        this.$store.commit('setLoader', {value: true})
         const res = await this.$calendarApi.saveDate({
           user_id: this.$auth?.user?._id,
           ...this.form
         })
-        this.$store.commit('setSnackbar', {success: true, value: true, text: 'השמירה בוצעה בהצלחה!'})
+        this.$store.commit('setLoader', {value: false})
+        await this.$store.dispatch('showSnackBar', {success: true, value: true, text: 'השמירה בוצעה בהצלחה!'})
         return this.$router.push({name: 'home'})
       } catch (e) {
-        this.$store.commit('setSnackbar', {error: true, value: true, text: e?.message})
+        this.$store.commit('setLoader', {value: false})
+        await this.$store.dispatch('showSnackBar', {error: true, value: true, text: e?.message})
         console.error('saveTheDate: ', e)
       }
     },

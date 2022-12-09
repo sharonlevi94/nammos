@@ -8,6 +8,11 @@
   src: url(../fonts/Amatica_SC/AmaticaSC-Bold.ttf);
   font-display: swap;
 }
+@font-face {
+  font-family: RubikLight;
+  src: url(../fonts/Rubik-Light.ttf);
+  font-display: swap;
+}
 .font {
   &.xl {
     font-size: 24px;
