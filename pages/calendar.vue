@@ -20,7 +20,6 @@
         :type="type"
         :events="events"
         color="primary"
-        type="week"
       ></v-calendar>
     </v-sheet>
   </SectionLayout>
@@ -36,22 +35,17 @@ export default {
       {label: 'שבועי',value:'week'},
       {label: 'יומי',value:'day'}
     ],
-    today: '2019-01-08',
-    events: [
-      {
-        name: 'Sharon Levi',
-        start: '2019-01-07 09:00',
-      },
-      {
-        name: `Thomas Cohen`,
-        start: '2019-01-10 10:00',
-      },
-      {
-        name: 'Mash Potatoes',
-        start: '2019-01-09 12:30',
-      },
-    ],
+    today: null,
+    events: [],
   }),
+  async created() {
+    try {
+      this.today = new Date().toISOString().split('T')[0]
+      this.events = await this.$calendarApi.getEvents()
+    } catch (e) {
+      console.log('calendar created error: ', e)
+    }
+  },
   mounted () {
     this.$refs.calendar.scrollToTime('08:00')
   },

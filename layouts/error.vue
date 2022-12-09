@@ -13,7 +13,7 @@
             title="חזרה לדף הבית"
             class="mt-5"
             color="primary"
-            @click="$router.push({name:'home'})"/>
+            @click="$router.push({name:'index'})"/>
         </v-flex>
       </v-layout>
     </v-container>

@@ -9,6 +9,7 @@ export default (context, inject) => {
   })
   inject('calendarApi', {
     getAvailableTimes: data => context.$axios.$get('calendar/available-times', {params: data}),
-    saveDate: data => context.$axios.$post('calendar', data)
+    saveDate: data => context.$axios.$post('calendar', data),
+    getEvents: () => context.$axios.$get('calendar')
   })
 }

@@ -1,15 +1,10 @@
 <template>
-  <div :class="[
-    'section-layout',
-    classes,
-    lg? 'pa-7' : md? 'pa-5': sm? 'pa-3': '',
-    { 'd-none d-print-block': print },
-    $auth.loggedIn ? '' : 'full-layout']"
+  <div :class="['section-layout',classes, $auth.loggedIn ? '' : 'full-layout']"
        :style="styles.join('')">
-<!--    <div :class="['section-layout-header','section-padding']">-->
-<!--      <slot name="header" />-->
-<!--    </div>-->
-    <div :class="['section-padding',$auth.loggedIn ? '' : 'full-layout' ]">
+    <div :class="[
+      'section-padding',
+      $auth.loggedIn ? '' : 'full-layout',
+      lg? 'pa-7' : md? 'pa-5': sm? 'pa-3': '',]">
       <slot/>
     </div>
   </div>
@@ -46,7 +41,7 @@ export default {
   flex: 1 1 auto;
   flex-wrap: nowrap;
   min-width: 0;
-  min-height: calc(100vh - 60px - 30px);
+  min-height: calc(100vh - 60px - 35px);
   // background-color: #E5E5E5;
   &.full-layout {
     min-height: 100vh;
@@ -58,7 +53,7 @@ export default {
 }
 .section-padding{
   width: 100%;
-  min-height: calc(100vh - 60px - 30px);
+  min-height: calc(100vh - 60px - 35px);
   &.full-layout {
     min-height: 100vh;
   }

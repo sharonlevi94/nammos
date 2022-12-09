@@ -1,11 +1,6 @@
 <template>
-  <div class="snackbar text-center">
-    <v-snackbar
-      v-model="$store.state.snackbarValue"
-      shaped
-      :color="$store.state.snackbarSuccess ? 'success' : 'error'">
-      {{ $store.state.snackbarText }}
-    </v-snackbar>
+  <div :class="['snackbar', 'text-center', $store.state.snackbarError ? 'error' : '']">
+    <span>{{ $store.state.snackbarText }}</span>
   </div>
 </template>
 
@@ -17,7 +12,24 @@ export default {
 
 <style lang="scss" scoped>
 .snackbar {
-  font-family: Arial;
+  position: absolute;
+  right: 15%;
+  bottom: 50px;
   z-index: 999;
+  background-color: #38a34a;
+  opacity: 80%;
+  border-radius: 50px;
+
+  color: white;
+  font-size: 140%;
+  letter-spacing: 3px;
+
+  min-height: 42px;
+  width: 70vw;
+
+  animation: moveFromBottom 500ms ease;
+  &.error {
+    background-color: #fe2525 !important;
+  }
 }
 </style>

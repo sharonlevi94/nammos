@@ -3,10 +3,11 @@
     <AppHeader v-if="$auth.loggedIn" @showDrawer="rightDrawer = !rightDrawer"/>
     <v-main>
       <Nuxt />
+      <Loader v-if="$store.state.loader"/>
     </v-main>
     <Navigation  :drawer="rightDrawer" @close="rightDrawer = !rightDrawer"/>
+    <NammosSnackbar v-if="$store.getters.snackbarValue"/>
     <AppFooter v-if="$auth.loggedIn"/>
-    <NammosSnackbar v-if="$store.state.snackbarValue"/>
   </v-app>
 </template>
 
@@ -48,3 +49,6 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+</style>

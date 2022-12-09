@@ -98,25 +98,27 @@ export default {
   methods: {
     async login () {
       try {
+        this.$store.commit('setLoader', {value: true})
         const response = await this.$auth.loginWith('local', {
           data: {...this.form}
         })
-        if (response?.data) {
+        if (response?.data?.message) {
+          throw { message: response?.data?.message }
+        }
+        else if (response?.data) {
           await this.$auth.setUser(response.data.user)
           await this.$auth.setUserToken(response.data.token)
+          this.$store.commit('auth-users/setToken', response.data.token)
+          this.$store.commit('auth-users/setUser', response.data.user)
+          this.$store.commit('setLoader', {value: false})
+          await this.$store.dispatch('showSnackBar', {success: true, text: 'התחברת בהצלחה!', value: true})
+          return this.$router.push({name: 'index'})
         }
-        this.$store.commit('auth-users/setToken', response.data.token)
-        this.$store.commit('auth-users/setUser', response.data.user)
-        return this.$router.push({name: 'index'})
       } catch (e) {
         await this.$auth.logout()
-        console.log(e, 'e')
-        this.$store.commit('setSnackbar', {
-          error: true,
-          text: e?.message,
-          value: true
-        })
         console.error('login error: ', e)
+        this.$store.commit('setLoader', {value: false})
+        await this.$store.dispatch('showSnackBar', {error: true, text: e?.message, value: true})
       }
     }
   },

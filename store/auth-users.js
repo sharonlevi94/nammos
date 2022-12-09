@@ -1,4 +1,3 @@
-import error from "~/layouts/error";
 
 export const state = () => ({
   token: null,

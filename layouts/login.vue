@@ -2,8 +2,9 @@
   <v-app id="nammos">
     <v-main>
       <Nuxt/>
+      <Loader v-if="$store.state.loader"/>
     </v-main>
-    <NammosSnackbar v-if="$store.state.snackbarValue"/>
+    <NammosSnackbar v-if="$store.getters.snackbarValue"/>
   </v-app>
 </template>
 

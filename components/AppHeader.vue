@@ -1,10 +1,10 @@
 <template>
-  <v-app-bar color="#1877F2" height="80px" app class="app-bar rounded-b-xl" elevation="10">
+  <v-app-bar color="#1877F2" height="60px" app class="app-bar rounded-b-xl" elevation="10">
     <div style="width: 33%;" class="d-flex justify-start">
       <i class="icon hamburger" @click.stop="$emit('showDrawer')"/>
     </div>
     <div style="width: 33%;" class="d-flex justify-center">
-      <img width="60" height="60" src="../assets/images/nammos.png" @click="$router.push('/home')" alt="nammos-logo"/>
+      <img width="50" height="50" src="../assets/images/nammos.png" @click="$router.push('/home')" alt="nammos-logo"/>
     </div>
     <div style="width: 33%"/>
   </v-app-bar>

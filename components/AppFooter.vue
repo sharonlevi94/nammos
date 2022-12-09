@@ -1,7 +1,7 @@
 <template>
   <v-footer
     color="#1877F2"
-    height="50px"
+    height="35px"
     app
     class="d-flex justify-space-around rounded-t-pill">
     <i class="icon person" @click="$router.push({name:'profile'})"/>
