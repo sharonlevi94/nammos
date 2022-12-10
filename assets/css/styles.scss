@@ -30,6 +30,20 @@ label, h1, h2, h3, h4, h5, h6, p, div, v-container {
 .full-width {
   width: 100%;
 }
+.card {
+  background-color: white;
+  border-radius: 10px;
+  height: 42px;
+  width: 100%;
+  font-size: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: start;
+
+  padding: 8px 20px;
+}
 
 @keyframes moveFromCenterTop {
   from {

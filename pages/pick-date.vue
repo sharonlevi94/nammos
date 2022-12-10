@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout md>
+  <PageLayout md>
       <v-container fluid>
         <v-layout row wrap>
           <v-flex class="pick-section" v-if="show === 'date_picker'" xs12>
@@ -40,7 +40,7 @@
           </v-flex>
           <v-flex class="pick-section" v-if="show === 'final_message'" xs12>
             <span class="date-title">התאריך והשעה שבחרת:</span>
-            <div class="d-flex">
+            <div class="d-flex flex-column">
               <span class="date-title">{{ form.date && form.date.split('-').reverse().join('-') }}</span>
               <span class="date-title">{{ form.time }}</span>
             </div>
@@ -52,7 +52,7 @@
           </v-flex>
         </v-layout>
       </v-container>
-  </SectionLayout>
+  </PageLayout>
 </template>
 
 <script>
@@ -118,8 +118,7 @@ export default {
 
 <style lang="scss" scoped>
 .date-title {
-  font-size: 42px;
-  width: 100%;
+  font-size: 21px;
 }
 .pick-section {
   animation: moveFromLeft 500ms ease;

@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout></SectionLayout>
+  <PageLayout></PageLayout>
 </template>
 
 <script>

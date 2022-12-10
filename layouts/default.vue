@@ -17,6 +17,7 @@ import Header from "~/components/AppHeader";
 import Footer from "~/components/AppFooter";
 export default {
   name: 'DefaultLayout',
+  middleware: ['route-navigated-from'],
   data () {
     return {
       rightDrawer: false,

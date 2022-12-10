@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout md :background="'#18adf2'">
+  <PageLayout md :background="'#18adf2'">
     <v-container style="height: 100vh" class="d-flex justify-start align-center">
       <v-layout row wrap>
         <v-flex class="d-flex justify-center align-center" xs12>
@@ -7,7 +7,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </SectionLayout>
+  </PageLayout>
 </template>
 
 <script>

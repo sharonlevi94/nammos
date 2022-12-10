@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout>
+  <PageLayout>
     <v-sheet height="100vh">
       <v-select
         v-model="type"
@@ -22,7 +22,7 @@
         color="primary"
       ></v-calendar>
     </v-sheet>
-  </SectionLayout>
+  </PageLayout>
 </template>
 
 <script>

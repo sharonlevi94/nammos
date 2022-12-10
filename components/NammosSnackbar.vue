@@ -21,8 +21,13 @@ export default {
   border-radius: 50px;
 
   color: white;
-  font-size: 140%;
-  letter-spacing: 3px;
+  font-size: 16px;
+  // letter-spacing: 3px;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   min-height: 42px;
   width: 70vw;

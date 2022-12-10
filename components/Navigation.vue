@@ -5,7 +5,7 @@
     fixed
   >
     <i class="icon close xs mr-8 mt-7" @click="$emit('close')"/>
-    <div class="pa-10 font xl">
+    <div class="pa-10 font md">
       <div
         v-for="(item, index) in items"
         :key="index"
@@ -18,7 +18,7 @@
       </div>
       <div class="d-flex mt-3">
         <v-icon class="ml-5">mdi-logout</v-icon>
-        <span class="font xl" @click="logout">יציאה</span>
+        <span class="font md" @click="logout">יציאה</span>
       </div>
     </div>
   </v-navigation-drawer>

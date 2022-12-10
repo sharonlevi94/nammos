@@ -1,6 +1,7 @@
 export const state = () => ({
   drawer: false,
   loader: false,
+  routeNavigatedFrom: 'home',
   windowWidth: null,
   windowHeight: null,
 
@@ -28,7 +29,10 @@ export const mutations = {
     state.snackbarText = payload?.text
     state.snackbarSuccess = payload?.success || false
     state.snackbarError = payload?.error || false
-  }
+  },
+  setRouteFrom (state, { route }) {
+    state.routeNavigatedFrom = route
+  },
 }
 
 export const actions = {

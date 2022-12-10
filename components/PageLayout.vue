@@ -4,7 +4,7 @@
     <div :class="[
       'section-padding',
       $auth.loggedIn ? '' : 'full-layout',
-      lg? 'pa-7' : md? 'pa-5': sm? 'pa-3': '',]">
+      lg? 'pa-5' : md? 'pa-3': sm? 'pa-1': '',]">
       <slot/>
     </div>
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'SectionLayout',
+  name: 'PageLayout',
   props: {
     title: { type: String, default: '' },
     sm: { type: Boolean, default: false },

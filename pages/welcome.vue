@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout md :background="'#18adf2'">
+  <PageLayout md :background="'#18adf2'">
     <v-container style="height: 100vh" class="d-flex justify-start align-start">
       <v-layout row wrap>
         <v-flex class="d-flex justify-center" xs12>
@@ -73,17 +73,17 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </SectionLayout>
+  </PageLayout>
 </template>
 
 <script>
-import SectionLayout from "~/components/SectionLayout";
+import PageLayout from "~/components/PageLayout";
 import rules from "~/mixins/rules";
 export default {
   name: "welcome",
   layout: 'login',
   auth: false,
-  components: {SectionLayout},
+  components: {PageLayout},
   mixins: [rules],
   data () {
     return {

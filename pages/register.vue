@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout md :background="'#18adf2'">
+  <PageLayout md :background="'#18adf2'">
     <v-form ref="form" >
       <v-container>
         <v-layout v-if="registerSuccess" row wrap>
@@ -85,17 +85,17 @@
         </v-layout>
       </v-container>
     </v-form>
-  </SectionLayout>
+  </PageLayout>
 </template>
 
 <script>
-import SectionLayout from "~/components/SectionLayout";
+import PageLayout from "~/components/PageLayout";
 import rules from "~/mixins/rules";
 export default {
   name: "register",
   layout: 'login',
   auth: false,
-  components: {SectionLayout},
+  components: {PageLayout},
   mixins: [rules],
   data () {
     return {

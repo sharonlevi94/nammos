@@ -1,13 +1,13 @@
 <template>
-  <SectionLayout>
-  </SectionLayout>
+  <PageLayout>
+  </PageLayout>
 </template>
 
 <script>
-import SectionLayout from "~/components/SectionLayout";
+import PageLayout from "~/components/PageLayout";
 export default {
   name: "profile",
-  components: {SectionLayout}
+  components: {PageLayout}
 }
 </script>
 
