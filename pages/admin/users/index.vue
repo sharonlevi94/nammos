@@ -14,15 +14,8 @@
 
     <v-container>
       <v-layout row>
-        <v-flex xs12>
-          <v-expansion-panels>
-            <v-expansion-panel
-              v-for="i in 10"
-              :key="i"
-              title="Item"
-              text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            ></v-expansion-panel>
-          </v-expansion-panels>
+        <v-flex v-for="(user, index) in users" :key="index" class="user" xs12 mb-2 pa-5>
+          <span>{{ user && user.full_name}}</span>
         </v-flex>
       </v-layout>
     </v-container>
@@ -38,15 +31,13 @@ export default {
   data () {
     return {
       userSearchKey: null,
-      users: [],
-      filteredUsers: []
+      users: []
     }
   },
   async created () {
     try {
       this.$store.commit('setLoader', {value: true})
       this.users = await this.$usersApi.getUsers()
-      this.filteredUsers = JSON.parse(JSON.stringify(this.users))
       this.$store.commit('setLoader', {value: false})
     } catch (e) {
       this.$store.commit('setLoader', {value: false})
@@ -60,8 +51,15 @@ export default {
     }
   },
   methods: {
-    queryUsers: _.debounce(() => {
-      console.log('Debounce button clicked!')
+    queryUsers: _.debounce(async () => {
+      this.$store.commit('setLoader', {value: true})
+      if (!this.userSearchKey) {
+        this.users = await this.$usersApi.getUsers()
+      }
+      this.users = await this.$usersApi.getUsers({
+        filter: this.userSearchKey
+      })
+      this.$store.commit('setLoader', {value: false})
     }, 500)
   }
 }

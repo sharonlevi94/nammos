@@ -16,7 +16,7 @@ export default {
   name: "PageHeader",
   props: {
     title: { type: String, required: true, default: null },
-    showButton: { type: Boolean, required: true },
+    showButton: { type: Boolean, required: false, default: false },
     buttonTitle: { type: String, required: false, default: null },
     buttonIcon: { type: String, required: false, default: null },
   }

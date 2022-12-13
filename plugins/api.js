@@ -3,7 +3,7 @@ export default (context, inject) => {
     refreshUserData: data => context.$axios.$get('auth/find-one', {params: data})
   })
   inject('usersApi', {
-    getUsers: () => context.$axios.$get('users'),
+    getUsers: (filter) => context.$axios.$get('users', {params: filter}),
     getUser: id => context.$axios.$get(`users/${id}`),
     addUser: data => context.$axios.$post('users', data)
   })
