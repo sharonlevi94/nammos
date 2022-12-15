@@ -14,8 +14,22 @@
 
     <v-container>
       <v-layout row>
-        <v-flex v-for="(user, index) in users" :key="index" class="user" xs12 mb-2 pa-5>
+        <v-flex v-for="(user, index) in users" :key="index" class="user" xs12 mb-2 px-5>
           <span>{{ user && user.full_name}}</span>
+          <div class="d-flex">
+            <div class="d-flex align-center active-switch">
+              <span class="ml-4">משתמש פעיל</span>
+              <v-switch
+                v-model="user && user.active"
+              ></v-switch>
+            </div>
+            <div class="d-flex align-center" >
+              <span class="ml-4">מנהל</span>
+              <v-switch
+                v-model="user && user.admin"
+              ></v-switch>
+            </div>
+          </div>
         </v-flex>
       </v-layout>
     </v-container>
@@ -51,20 +65,36 @@ export default {
     }
   },
   methods: {
-    queryUsers: _.debounce(async () => {
-      this.$store.commit('setLoader', {value: true})
-      if (!this.userSearchKey) {
-        this.users = await this.$usersApi.getUsers()
+    queryUsers: _.debounce(async function () {
+      try {
+        this.$store.commit('setLoader', {value: true})
+        if (!this.userSearchKey) {
+          this.users = await this.$usersApi.getUsers()
+        }
+        this.users = await this.$usersApi.getUsers({
+          filter: this.userSearchKey
+        })
+        this.$store.commit('setLoader', {value: false})
+      } catch (e) {
+        console.error('queryUsers error: ', e)
       }
-      this.users = await this.$usersApi.getUsers({
-        filter: this.userSearchKey
-      })
-      this.$store.commit('setLoader', {value: false})
     }, 500)
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.user {
+  border: 1px solid $primary;
+  border-radius: 50px;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.active-switch {
+  border-left: 1px solid $primary;
+  margin-left: 20px;
+  padding-left: 20px;
+}
 </style>

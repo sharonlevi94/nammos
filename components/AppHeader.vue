@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="#1877F2" height="60px" app class="app-bar rounded-b-xl" elevation="10">
+  <v-app-bar color="primary" height="60px" app class="app-bar rounded-b-xl" elevation="10">
     <div style="width: 33%;" class="d-flex justify-start">
       <i class="icon hamburger" @click.stop="$emit('showDrawer')"/>
     </div>
