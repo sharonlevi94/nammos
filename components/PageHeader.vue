@@ -7,7 +7,8 @@
       width="50%"
       height="30px"
       font-size="14px"
-      :icon="buttonIcon"/>
+      :icon="buttonIcon"
+      @click="$emit('clickButton')"/>
   </div>
 </template>
 

@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 .snackbar {
-  position: absolute;
+  position: fixed;
   right: 15%;
   bottom: 50px;
   z-index: 999;

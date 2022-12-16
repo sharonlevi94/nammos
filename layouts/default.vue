@@ -4,7 +4,6 @@
     <v-main>
       <Nuxt />
       <Loader v-if="$store.state.loader"/>
-      <SaveButton/>
     </v-main>
     <Navigation  :drawer="rightDrawer" @close="rightDrawer = !rightDrawer"/>
     <NammosSnackbar v-if="$store.getters.snackbarValue"/>

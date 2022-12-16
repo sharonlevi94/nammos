@@ -1,6 +1,7 @@
 export const state = () => ({
   drawer: false,
   loader: false,
+  save: false,
   routeNavigatedFrom: 'home',
   windowWidth: null,
   windowHeight: null,
@@ -17,6 +18,9 @@ export const mutations = {
   },
   setLoader (state, { value }) {
     state.loader = value
+  },
+  setSaveButton (state, { value }) {
+    state.save = value
   },
   setWindowWidth (state, { windowWidth }) {
     state.windowWidth = windowWidth

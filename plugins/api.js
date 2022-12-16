@@ -5,7 +5,8 @@ export default (context, inject) => {
   inject('usersApi', {
     getUsers: (filter) => context.$axios.$get('users', {params: filter}),
     getUser: id => context.$axios.$get(`users/${id}`),
-    addUser: data => context.$axios.$post('users', data)
+    addUser: data => context.$axios.$post('users', data),
+    updateManyUsers: body => context.$axios.$patch('users', body)
   })
   inject('calendarApi', {
     getAvailableTimes: data => context.$axios.$get('calendar/available-times', {params: data}),
