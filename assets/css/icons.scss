@@ -61,6 +61,9 @@
   &.plus {
     background-image: url("../icons/plus.svg");
   }
+  &.plus-dark {
+    background-image: url("../icons/plus-dark.svg");
+  }
   &.settings {
     background-image: url("../icons/settings.svg");
   }
@@ -72,5 +75,8 @@
   }
   &.search {
     background-image: url("../icons/search-black.svg");
+  }
+  &.trash-dark {
+    background-image: url("../icons/trash-dark.svg");
   }
 }

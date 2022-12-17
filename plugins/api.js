@@ -13,4 +13,9 @@ export default (context, inject) => {
     saveDate: data => context.$axios.$post('calendar', data),
     getEvents: () => context.$axios.$get('calendar')
   })
+  inject('boatModelsApi', {
+    updateBoatModel: (id, data) => context.$axios.$patch(`boat-models/${id}`,  data),
+    addBoatModel: data => context.$axios.$post('boat-models', data),
+    getBoatModels: () => context.$axios.$get('boat-models')
+  })
 }
