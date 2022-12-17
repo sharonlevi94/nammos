@@ -5,7 +5,7 @@
       button-title="הוספת דגם חדש"
       button-icon="plus"
       show-button
-      @clickButton="createOrEditModal = !createOrEditModal"/>
+      @clickButton="modalForm = {name: null, sub_models: ['']} ;createOrEditModal = !createOrEditModal"/>
 
     <v-autocomplete
       v-model="modelNameChosen"
@@ -31,7 +31,7 @@
 
     <NammosModal
       :value="createOrEditModal"
-      title="יצירת דגם חדש"
+      :title="modalForm._id ? 'עריכת דגם' : 'יצירת דגם חדש'"
       @close="createOrEditModal = !createOrEditModal; onEdit = false">
       <span>שם הדגם</span>
       <v-text-field v-model="modalForm.name" placeholder="הכנס שם דגם"/>
