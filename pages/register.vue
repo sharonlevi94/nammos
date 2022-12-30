@@ -1,6 +1,6 @@
 <template>
   <PageLayout md :background="'#18adf2'">
-    <v-form ref="form" >
+    <v-form ref="form" class="form">
       <v-container>
         <v-layout v-if="registerSuccess" row wrap>
           <v-flex xs12>
@@ -139,5 +139,8 @@ export default {
       font-weight: 600;
     }
   }
+}
+.form {
+  animation: moveFromTop 900ms ease;
 }
 </style>

@@ -45,6 +45,10 @@ label, h1, h2, h3, h4, h5, h6, p, div, v-container {
   padding: 8px 20px;
 }
 
+.main-manu {
+  animation: moveFromTop 900ms ease;
+}
+
 @keyframes moveFromCenterTop {
   from {
     opacity: 0;

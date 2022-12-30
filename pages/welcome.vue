@@ -7,7 +7,7 @@
         </v-flex>
         <v-flex xs12>
           <v-container fluid>
-            <v-layout v-if="!displayLogin" row wrap>
+            <v-layout v-if="!displayLogin" class="form" row wrap>
               <v-flex xs12 mt-10>
                 <v-btn
                   class="btn-text"
@@ -28,7 +28,7 @@
                 </v-btn>
               </v-flex>
             </v-layout>
-            <v-form v-else ref="form" @submit.prevent="login">
+            <v-form v-else ref="form" class="form" @submit.prevent="login">
               <v-layout row wrap>
                 <v-flex class="d-flex flex-column" xs12>
                   <span class="field-title font lg">דוא"ל</span>
@@ -60,6 +60,15 @@
                     כניסה
                   </v-btn>
                 </v-flex>
+<!--                <v-flex xs12 mt-3>-->
+<!--                  <v-btn class="btn-text"-->
+<!--                         block-->
+<!--                         x-large-->
+<!--                         elevation="10"-->
+<!--                         @click="sendSms">-->
+<!--                    שלח SMS-->
+<!--                  </v-btn>-->
+<!--                </v-flex>-->
                 <v-flex class="d-flex justify-center" xs12>
                   <span class="field-title text-decoration-underline"
                         style="cursor: pointer"
@@ -79,6 +88,7 @@
 <script>
 import PageLayout from "~/components/PageLayout";
 import rules from "~/mixins/rules";
+import error from "~/layouts/error";
 export default {
   name: "welcome",
   layout: 'login',
@@ -120,6 +130,17 @@ export default {
         this.$store.commit('setLoader', {value: false})
         await this.$store.dispatch('showSnackBar', {error: true, text: e?.message, value: true})
       }
+    },
+    async sendSms () {
+      try {
+        const res = await this.$smsApi.sendMessage({
+          recipient: '+972503644403',
+          message: 'הודעה טסט'
+        })
+        console.log(res, 'res')
+      } catch (e) {
+        console.error('send sms error: ', e)
+      }
     }
   },
   created() {
@@ -138,6 +159,7 @@ export default {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  animation: moveFromTop 900ms ease;
 
 }
 .error--text {
@@ -153,5 +175,8 @@ export default {
       font-weight: 600;
     }
   }
+}
+.form {
+  animation: moveFromLeft 900ms ease;
 }
 </style>

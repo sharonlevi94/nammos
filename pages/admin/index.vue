@@ -1,7 +1,7 @@
 <template>
   <PageLayout md>
     <v-container fluid>
-      <v-layout column>
+      <v-layout column class="main-manu">
         <v-flex
           v-if="item && item.admin ? $auth.user.admin : true"
           v-for="(item, index) in items"

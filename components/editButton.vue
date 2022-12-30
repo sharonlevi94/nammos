@@ -13,7 +13,7 @@ export default {
 
 <style lang="scss" scoped>
 .edit-btn {
-  z-index: 999;
+  z-index: 200;
   position: fixed;
   top: 50%;
   left: 0;

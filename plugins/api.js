@@ -18,4 +18,12 @@ export default (context, inject) => {
     addBoatModel: data => context.$axios.$post('boat-models', data),
     getBoatModels: () => context.$axios.$get('boat-models')
   })
+  inject('smsApi', {
+    sendMessage: data => context.$axios.$post('message-bird/send-sms', data),
+  })
+  inject('queueApi', {
+    getQueue: () => context.$axios.$get('queue'),
+    addToQueue: (userId) => context.$axios.$post('queue', {user_id: userId}),
+    removeFromQueue: (userId) => context.$axios.$delete(`queue/${userId}`),
+  })
 }
