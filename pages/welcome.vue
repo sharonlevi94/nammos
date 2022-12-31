@@ -40,7 +40,10 @@
                   ></v-text-field>
                 </v-flex>
                 <v-flex class="d-flex flex-column" xs12>
-                  <span class="field-title">סיסמה</span>
+                  <div class="d-flex justify-space-between">
+                    <span class="field-title">סיסמה</span>
+                    <span class="forgot-password" @click="forgotPasswordModal = !forgotPasswordModal">שכחתי סיסמה</span>
+                  </div>
                   <v-text-field
                     v-model="form.password"
                     :rules="notEmptyAndPassword"
@@ -53,7 +56,7 @@
                 </v-flex>
                 <v-flex xs12>
                   <div class="d-flex align-center">
-                    <v-checkbox v-model="rememberMe" color="white" @click="rememberMe = !rememberMe"/>
+                    <NammosCheckbox :active="rememberMe" @activate="rememberMe = !rememberMe" class="ml-5"/>
                     <span class="field-title">זכור אותי</span>
                   </div>
                 </v-flex>
@@ -79,6 +82,21 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <NammosModal
+      :value="forgotPasswordModal"
+      @close="forgotPasswordModal = !forgotPasswordModal">
+      <p style="font-size: 18px" v-text="'הכניסו כתובת מייל ונשלח אליכם לינק לאיפוס הסיסמה:'"/>
+      <v-text-field
+        v-model="email"
+        :rules="notEmptyAndEmail"
+        placeholder="המייל שלכם"
+        solo
+      ></v-text-field>
+      <NammosButton
+        title="קדימה!"
+        font-size="18px"
+        @click="renewPassword"/>
+    </NammosModal>
   </PageLayout>
 </template>
 
@@ -97,10 +115,12 @@ export default {
       displayLogin: false,
       showPassword: false,
       rememberMe: false,
+      forgotPasswordModal: false,
       form: {
         phone_number: null,
         password: null
-      }
+      },
+      email: null
     }
   },
   methods: {
@@ -136,6 +156,9 @@ export default {
         this.$store.commit('setLoader', {value: false})
         await this.$store.dispatch('showSnackBar', {error: true, text: e?.message, value: true})
       }
+    },
+    renewPassword () {
+      this.$store.dispatch('showSnackBar', {error: true, text: 'מצטערים! שירות זה יהיה זמין ממש בקרוב!', value: true})
     }
   },
   created() {
@@ -162,7 +185,8 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   animation: moveFromTop 900ms ease;
-
+  //transform: rotateX(560deg);
+  //animation: turn 3.5s ease-out forwards 1s;
 }
 .error--text {
   ::v-deep {
@@ -180,5 +204,13 @@ export default {
 }
 .form {
   animation: moveFromLeft 900ms ease;
+}
+.forgot-password {
+  display: flex;
+  align-items: flex-end;
+  color: white;
+  font-size: 18px;
+  padding-bottom: 10px;
+  text-decoration: underline;
 }
 </style>
