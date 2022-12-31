@@ -31,11 +31,11 @@
             <v-form v-else ref="form" class="form" @submit.prevent="login">
               <v-layout row wrap>
                 <v-flex class="d-flex flex-column" xs12>
-                  <span class="field-title font lg">דוא"ל</span>
+                  <span class="field-title font lg">מספר נייד</span>
                   <v-text-field
-                    v-model="form.email"
-                    :rules="notEmpty"
-                    placeholder="דואר אלקטרוני"
+                    v-model="form.phone_number"
+                    :rules="notEmptyAndPhoneNumber"
+                    placeholder="מספר נייד"
                     solo
                   ></v-text-field>
                 </v-flex>
@@ -43,13 +43,19 @@
                   <span class="field-title">סיסמה</span>
                   <v-text-field
                     v-model="form.password"
-                    :rules="notEmpty"
+                    :rules="notEmptyAndPassword"
                     placeholder="סיסמה"
                     :type="showPassword? 'text' : 'password'"
                     :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                     solo
                     @click:append="showPassword = !showPassword"
                   ></v-text-field>
+                </v-flex>
+                <v-flex xs12>
+                  <div class="d-flex align-center">
+                    <v-checkbox v-model="rememberMe" color="white" @click="rememberMe = !rememberMe"/>
+                    <span class="field-title">זכור אותי</span>
+                  </div>
                 </v-flex>
                 <v-flex xs12 mt-3>
                   <v-btn class="btn-text"
@@ -60,15 +66,6 @@
                     כניסה
                   </v-btn>
                 </v-flex>
-<!--                <v-flex xs12 mt-3>-->
-<!--                  <v-btn class="btn-text"-->
-<!--                         block-->
-<!--                         x-large-->
-<!--                         elevation="10"-->
-<!--                         @click="sendSms">-->
-<!--                    שלח SMS-->
-<!--                  </v-btn>-->
-<!--                </v-flex>-->
                 <v-flex class="d-flex justify-center" xs12>
                   <span class="field-title text-decoration-underline"
                         style="cursor: pointer"
@@ -88,7 +85,7 @@
 <script>
 import PageLayout from "~/components/PageLayout";
 import rules from "~/mixins/rules";
-import error from "~/layouts/error";
+
 export default {
   name: "welcome",
   layout: 'login',
@@ -99,8 +96,9 @@ export default {
     return {
       displayLogin: false,
       showPassword: false,
+      rememberMe: false,
       form: {
-        email: null,
+        phone_number: null,
         password: null
       }
     }
@@ -108,6 +106,14 @@ export default {
   methods: {
     async login () {
       try {
+        if (!this.form.phone_number || !this.form.password) {
+          return
+        }
+        if (this.rememberMe) {
+          this.$auth.$storage.setLocalStorage('form', JSON.stringify(this.form))
+        } else {
+          this.$auth.$storage.removeLocalStorage('form')
+        }
         this.$store.commit('setLoader', {value: true})
         const response = await this.$auth.loginWith('local', {
           data: {...this.form}
@@ -130,22 +136,18 @@ export default {
         this.$store.commit('setLoader', {value: false})
         await this.$store.dispatch('showSnackBar', {error: true, text: e?.message, value: true})
       }
-    },
-    async sendSms () {
-      try {
-        const res = await this.$smsApi.sendMessage({
-          recipient: '+972503644403',
-          message: 'הודעה טסט'
-        })
-        console.log(res, 'res')
-      } catch (e) {
-        console.error('send sms error: ', e)
-      }
     }
   },
   created() {
     if (this.$auth.loggedIn) {
-      this.$router.push({name: 'index'})
+      this.$router.push({name: 'home'})
+    }
+    const formRemembered= this.$auth.$storage.getLocalStorage('form')
+    if (formRemembered) {
+      this.rememberMe = true
+      const formParsed = JSON.parse(JSON.stringify(formRemembered))
+      this.form.phone_number = formParsed.phone_number
+      this.form.password = formParsed.password
     }
   }
 }
