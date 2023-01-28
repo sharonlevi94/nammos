@@ -26,6 +26,7 @@ export default {
       if (!this.$auth.loggedIn) {
         return this.$router.push({name: 'welcome'})
       }
+      // await this.$store.dispatch('auth-users/refreshToken')
     } catch (e) {
       console.error('layout default error: ', e)
     }
