@@ -12,12 +12,10 @@
 </template>
 
 <script>
-import Navigation from "~/components/Navigation";
-import Header from "~/components/AppHeader";
-import Footer from "~/components/AppFooter";
+
 export default {
   name: 'DefaultLayout',
-  middleware: ['route-navigated-from'],
+  middleware: ['route-navigated-from', 'refresh-token'],
   data () {
     return {
       rightDrawer: false,
@@ -28,7 +26,7 @@ export default {
       if (!this.$auth.loggedIn) {
         return this.$router.push({name: 'welcome'})
       }
-      return this.$store.dispatch('auth-users/refreshToken')
+      // await this.$store.dispatch('auth-users/refreshToken')
     } catch (e) {
       console.error('layout default error: ', e)
     }
