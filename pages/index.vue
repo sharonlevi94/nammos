@@ -4,6 +4,7 @@
       <v-layout row wrap>
         <v-flex class="d-flex justify-center align-center" xs12>
           <div class="nammos-logo"/>
+          <NammosButton title="לדף כניסה" color="white" @click="$router.push({name: 'welcome'})"/>
         </v-flex>
       </v-layout>
     </v-container>

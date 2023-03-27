@@ -148,7 +148,7 @@ export default {
           this.$store.commit('auth-users/setUser', response.data.user)
           this.$store.commit('setLoader', {value: false})
           await this.$store.dispatch('showSnackBar', {success: true, text: 'התחברת בהצלחה!', value: true})
-          return this.$router.push({name: 'index'})
+          return this.$router.push({name: 'home'})
         }
       } catch (e) {
         await this.$auth.logout()
@@ -212,5 +212,6 @@ export default {
   font-size: 18px;
   padding-bottom: 10px;
   text-decoration: underline;
+  cursor: pointer;
 }
 </style>
