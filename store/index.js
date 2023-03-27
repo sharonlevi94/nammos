@@ -49,7 +49,7 @@ export const actions = {
         success: false,
         error: false
       })
-    }, 3000)
+    }, 5000)
   }
 }
 
