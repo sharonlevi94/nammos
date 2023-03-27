@@ -2,7 +2,7 @@
   <PageLayout md :background="'#18adf2'">
     <v-container style="height: 100vh" class="d-flex justify-start align-center">
       <v-layout row wrap>
-        <v-flex class="d-flex justify-center align-center" xs12>
+        <v-flex class="d-flex flex-column justify-center align-center" xs12>
           <div class="nammos-logo"/>
           <NammosButton title="לדף כניסה" color="white" @click="$router.push({name: 'welcome'})"/>
         </v-flex>
@@ -28,7 +28,7 @@ export default {
 <style lang="scss" scoped>
 .nammos-logo {
   width: 100%;
-  height: 100vh;
+  height: 50vh;
   background-image: url("../assets/images/nammos.png");
   background-size: contain;
   background-position: center;
