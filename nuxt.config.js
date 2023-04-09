@@ -65,7 +65,7 @@ export default {
       sizes: [64, 120, 144, 152, 192, 384, 512]
     },
     manifest: {
-      name: 'Nammos App',
+      name: 'Nammos',
       lang: 'he'
     }
   },
