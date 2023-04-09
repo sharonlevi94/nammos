@@ -135,6 +135,7 @@ export default {
           this.$auth.$storage.removeLocalStorage('form')
         }
         this.$store.commit('setLoader', {value: true})
+        console.log('this.$auth.loginWith 1')
         const response = await this.$auth.loginWith('local', {
           data: {...this.form}
         })
