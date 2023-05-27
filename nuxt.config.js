@@ -131,5 +131,8 @@ export default {
   },
   server: {
     host: 0
-  }
+  },
+  serverMiddleware: [
+    '~/middleware/serverMiddleware.js'
+  ]
 }
